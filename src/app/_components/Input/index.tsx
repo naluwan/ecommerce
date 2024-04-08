@@ -40,7 +40,7 @@ export const Input: React.FC<Props> = ({
             ? {
                 pattern: {
                   value: /\S+@\S+\.\S+/,
-                  message: 'Please enter a valid email',
+                  message: '請輸入正確的Email格式',
                 },
               }
             : {}),
@@ -49,9 +49,7 @@ export const Input: React.FC<Props> = ({
       />
       {error && (
         <div className={classes.errorMessage}>
-          {!error?.message && error?.type === 'required'
-            ? 'This field is required'
-            : error?.message}
+          {!error?.message && error?.type === 'required' ? '此為必填欄位' : error?.message}
         </div>
       )}
     </div>

@@ -67,7 +67,7 @@ const LoginForm: React.FC = () => {
       <Button
         type="submit"
         appearance="primary"
-        label={isLoading ? 'Processing' : 'Login'}
+        label={isLoading ? 'Processing' : '登入'}
         disabled={isLoading}
         className={classes.submit}
       />
