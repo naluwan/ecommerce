@@ -1,22 +1,22 @@
 export const inclusions = [
   {
-    title: 'Free Shipping',
-    description: 'Free shipping for order above $150',
+    title: '滿額免運',
+    description: '單筆購物滿$6,000免運',
     icon: '/assets/icons/shipping.svg',
   },
   {
-    title: 'Money Guarantee',
-    description: 'Within 30 days for an exchange',
+    title: '商品保證',
+    description: '保證本網站出售之商品皆為正品',
     icon: '/assets/icons/dollar.svg',
   },
   {
-    title: 'Online Support',
-    description: '24 hours a day, 7 days a week',
+    title: '線上客服',
+    description: '線上24小時客服服務',
     icon: '/assets/icons/support.svg',
   },
   {
-    title: 'Flexible Payment',
-    description: 'Pay with multiple credit cards',
+    title: '多元付款',
+    description: '支持多種付款方式',
     icon: '/assets/icons/payment.svg',
   },
 ]

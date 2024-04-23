@@ -96,15 +96,15 @@ const AccountForm: React.FC = () => {
       {!changePassword ? (
         <Fragment>
           <p>
-            {'Change your account details below, or '}
+            {'更新您的帳戶資料或點擊 '}
             <button
               type="button"
               className={classes.changePassword}
               onClick={() => setChangePassword(!changePassword)}
             >
-              click here
+              更新密碼
             </button>
-            {' to change your password.'}
+            {' 更新您的密碼'}
           </p>
           <Input
             name="email"

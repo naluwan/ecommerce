@@ -33,7 +33,7 @@ export default async function Account() {
             type: 'h1',
             children: [
               {
-                text: 'Account',
+                text: '帳戶資訊',
               },
             ],
           },
@@ -41,7 +41,7 @@ export default async function Account() {
             type: 'paragraph',
             children: [
               {
-                text: 'This is your account dashboard. Here you can update your account information, view your purchased products, and browse your order history. To manage all users, ',
+                text: '以下為您的帳戶資訊，在這可以更新你的帳戶資料、查詢購買的商品以及瀏覽歷史訂單',
               },
               {
                 type: 'link',
@@ -59,12 +59,8 @@ export default async function Account() {
       <Gutter className={classes.account}>
         <AccountForm />
         <HR />
-        <h2>Purchased Products</h2>
-        <p>
-          These are the products you have purchased over time. This provides a way for you to access
-          digital assets or gated content behind a paywall. This is different from your orders,
-          which are directly associated with individual payments.
-        </p>
+        <h2>已購買商品</h2>
+        <p>所有已付款之訂單中的商品皆會顯示在此清單中</p>
         <div>
           {user?.purchases?.length || 0 > 0 ? (
             <ul className={classes.purchases}>
@@ -83,23 +79,20 @@ export default async function Account() {
               })}
             </ul>
           ) : (
-            <div className={classes.noPurchases}>You have no purchases.</div>
+            <div className={classes.noPurchases}>尚無資料</div>
           )}
         </div>
         <HR />
-        <h2>Orders</h2>
-        <p>
-          These are the orders you have placed over time. Each order is associated with an payment
-          intent. As you order products, they will appear in your "purchased products" list.
-        </p>
+        <h2>歷史訂單</h2>
+        <p>可查詢歷史訂單，當您訂購產品時，產品將出現在已購買商品的清單中</p>
         <Button
           className={classes.ordersButton}
           href="/orders"
           appearance="primary"
-          label="View orders"
+          label="查詢訂單"
         />
         <HR />
-        <Button href="/logout" appearance="secondary" label="Log out" />
+        <Button href="/logout" appearance="secondary" label="登出" />
       </Gutter>
     </Fragment>
   )
