@@ -9,7 +9,7 @@ import { Gutter } from '../Gutter'
 
 import classes from './index.module.scss'
 
-const Title: React.FC = () => <span>Dashboard</span>
+const Title: React.FC = () => <span>主控版</span>
 
 export const AdminBar: React.FC<{
   adminBarProps?: PayloadAdminBarProps
@@ -38,8 +38,8 @@ export const AdminBar: React.FC<{
           {...adminBarProps}
           collection={collection}
           collectionLabels={{
-            singular: collection === 'products' ? 'Product' : 'Page',
-            plural: collection === 'products' ? 'Products' : 'Pages',
+            singular: collection === 'products' ? '商品' : '頁面',
+            plural: collection === 'products' ? '商品' : '頁面',
           }}
           key={user?.id} // use key to get the admin bar to re-run its `me` request
           cmsURL={process.env.NEXT_PUBLIC_SERVER_URL}
