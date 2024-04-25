@@ -54,7 +54,7 @@ export const CartProvider = props => {
     formatted: string
     raw: number
   }>({
-    formatted: '0.00',
+    formatted: '0',
     raw: 0,
   })
 
@@ -239,9 +239,10 @@ export const CartProvider = props => {
       }, 0) || 0
 
     setTotal({
-      formatted: (newTotal / 100).toLocaleString('en-US', {
+      formatted: (newTotal / 100).toLocaleString('zh-TW', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'TWD', // TODO: use `parsed.currency`
+        minimumFractionDigits: 0, // 去除小數點
       }),
       raw: newTotal,
     })

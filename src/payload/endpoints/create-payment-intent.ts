@@ -96,7 +96,7 @@ export const createPaymentIntent: PayloadHandler = async (req, res): Promise<voi
     const paymentIntent = await stripe.paymentIntents.create({
       customer: stripeCustomerID,
       amount: total,
-      currency: 'usd',
+      currency: 'TWD', // 設定付款幣種
       payment_method_types: ['card'],
     })
 
