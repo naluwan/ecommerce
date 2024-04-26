@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { Order } from '../../../../payload/payload-types'
+import { Order as OrderType } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { Gutter } from '../../../_components/Gutter'
 import { HR } from '../../../_components/HR'
@@ -22,7 +22,7 @@ export default async function Order({ params: { id } }) {
     )}&redirect=${encodeURIComponent(`/order/${id}`)}`,
   })
 
-  let order: Order | null = null
+  let order: OrderType | null = null
 
   try {
     order = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders/${id}`, {
@@ -57,9 +57,10 @@ export default async function Order({ params: { id } }) {
         <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
         <p className={classes.total}>
           {'Total: '}
-          {new Intl.NumberFormat('en-US', {
+          {new Intl.NumberFormat('zh-TW', {
             style: 'currency',
-            currency: 'usd',
+            currency: 'TWD', // TODO: use `parsed.currency`
+            minimumFractionDigits: 0, // 去除小數點
           }).format(order.total / 100)}
         </p>
       </div>
