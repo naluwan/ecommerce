@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
 import { Message } from '../../../_components/Message'
+import { useAuth } from '../../../_providers/Auth'
 
 import classes from './index.module.scss'
 
@@ -17,6 +18,7 @@ type FormData = {
 export const RecoverPasswordForm: React.FC = () => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
+  const { forgotPassword } = useAuth()
 
   const {
     register,
@@ -74,8 +76,8 @@ export const RecoverPasswordForm: React.FC = () => {
       )}
       {success && (
         <React.Fragment>
-          <h1>Request submitted</h1>
-          <p>Check your email for a link that will allow you to securely reset your password.</p>
+          <h1>重置密碼</h1>
+          <p>我們將發送重置密碼信件至您所填入的Email信箱，信箱內連結可協助您重置密碼.</p>
         </React.Fragment>
       )}
     </Fragment>

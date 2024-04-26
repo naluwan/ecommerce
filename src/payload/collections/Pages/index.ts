@@ -13,6 +13,7 @@ import { revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  labels: { singular: '頁面 ( pages )', plural: '頁面 ( pages )' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -39,11 +40,13 @@ export const Pages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+      label: '標題',
       required: true,
     },
     {
       name: 'publishedOn',
       type: 'date',
+      label: '上架日期',
       admin: {
         position: 'sidebar',
         date: {
@@ -65,14 +68,14 @@ export const Pages: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Hero',
+          label: '首頁橫幅 ( Hero )',
           fields: [hero],
         },
         {
-          label: 'Content',
+          label: '內容 ( Content )',
           fields: [
             {
-              name: 'layout',
+              name: '框架 ( Layout )',
               type: 'blocks',
               required: true,
               blocks: [CallToAction, Content, MediaBlock, Archive],

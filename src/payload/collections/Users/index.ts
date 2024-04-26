@@ -13,6 +13,7 @@ import { CustomerSelect } from './ui/CustomerSelect'
 
 const Users: CollectionConfig = {
   slug: 'users',
+  labels: { singular: '使用者 ( users )', plural: '使用者 ( users )' },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email'],
@@ -45,19 +46,21 @@ const Users: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+      label: '名稱',
     },
     {
       name: 'roles',
       type: 'select',
+      label: '權限',
       hasMany: true,
       defaultValue: ['customer'],
       options: [
         {
-          label: 'admin',
+          label: '管理者',
           value: 'admin',
         },
         {
-          label: 'customer',
+          label: '使用者',
           value: 'customer',
         },
       ],
@@ -72,7 +75,7 @@ const Users: CollectionConfig = {
     },
     {
       name: 'purchases',
-      label: 'Purchases',
+      label: '已購買過商品',
       type: 'relationship',
       relationTo: 'products',
       hasMany: true,
@@ -82,7 +85,7 @@ const Users: CollectionConfig = {
     },
     {
       name: 'stripeCustomerID',
-      label: 'Stripe Customer',
+      label: 'Stripe 顧客',
       type: 'text',
       access: {
         read: ({ req: { user } }) => checkRole(['admin'], user),
@@ -95,24 +98,26 @@ const Users: CollectionConfig = {
       },
     },
     {
-      label: 'Cart',
+      label: '購物車',
       name: 'cart',
       type: 'group',
       fields: [
         {
           name: 'items',
-          label: 'Items',
+          label: '內容',
           type: 'array',
           interfaceName: 'CartItems',
           fields: [
             {
               name: 'product',
               type: 'relationship',
+              label: '商品',
               relationTo: 'products',
             },
             {
               name: 'quantity',
               type: 'number',
+              label: '數量',
               min: 0,
               admin: {
                 step: 1,

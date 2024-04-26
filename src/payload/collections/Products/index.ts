@@ -15,6 +15,7 @@ import { ProductSelect } from './ui/ProductSelect'
 
 const Products: CollectionConfig = {
   slug: 'products',
+  labels: { singular: '商品 ( products )', plural: '商品 ( products )' },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'stripeProductID', '_status'],
@@ -42,11 +43,13 @@ const Products: CollectionConfig = {
   fields: [
     {
       name: 'title',
+      label: '標題',
       type: 'text',
       required: true,
     },
     {
       name: 'publishedOn',
+      label: '上架日期',
       type: 'date',
       admin: {
         position: 'sidebar',
@@ -69,21 +72,21 @@ const Products: CollectionConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Content',
+          label: '內容 ( Content )',
           fields: [
             {
-              name: 'layout',
+              name: '框架 ( Layout )',
               type: 'blocks',
               blocks: [CallToAction, Content, MediaBlock, Archive],
             },
           ],
         },
         {
-          label: 'Product Details',
+          label: '產品資訊 ( Product Details )',
           fields: [
             {
               name: 'stripeProductID',
-              label: 'Stripe Product',
+              label: 'Stripe 產品串接',
               type: 'text',
               admin: {
                 components: {
@@ -121,6 +124,7 @@ const Products: CollectionConfig = {
     },
     {
       name: 'categories',
+      label: '類別',
       type: 'relationship',
       relationTo: 'categories',
       hasMany: true,
@@ -130,6 +134,7 @@ const Products: CollectionConfig = {
     },
     {
       name: 'relatedProducts',
+      label: '相關產品',
       type: 'relationship',
       relationTo: 'products',
       hasMany: true,

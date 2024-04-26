@@ -10,6 +10,7 @@ import { LinkToPaymentIntent } from './ui/LinkToPaymentIntent'
 
 export const Orders: CollectionConfig = {
   slug: 'orders',
+  labels: { singular: '訂單 ( orders )', plural: '訂單 ( orders )' },
   admin: {
     useAsTitle: 'createdAt',
     defaultColumns: ['createdAt', 'orderedBy'],
@@ -28,6 +29,7 @@ export const Orders: CollectionConfig = {
     {
       name: 'orderedBy',
       type: 'relationship',
+      label: '購買人',
       relationTo: 'users',
       hooks: {
         beforeChange: [populateOrderedBy],
@@ -35,7 +37,7 @@ export const Orders: CollectionConfig = {
     },
     {
       name: 'stripePaymentIntentID',
-      label: 'Stripe Payment Intent ID',
+      label: 'Stripe 付款單號',
       type: 'text',
       admin: {
         position: 'sidebar',
@@ -47,27 +49,32 @@ export const Orders: CollectionConfig = {
     {
       name: 'total',
       type: 'number',
+      label: '總金額',
       required: true,
       min: 0,
     },
     {
       name: 'items',
       type: 'array',
+      label: '訂單內容',
       fields: [
         {
           name: 'product',
           type: 'relationship',
+          label: '商品',
           relationTo: 'products',
           required: true,
         },
         {
           name: 'price',
           type: 'number',
+          label: '價格',
           min: 0,
         },
         {
           name: 'quantity',
           type: 'number',
+          label: '數量',
           min: 0,
         },
       ],

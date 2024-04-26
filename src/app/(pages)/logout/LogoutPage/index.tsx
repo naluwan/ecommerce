@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { Settings } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
 
+import classes from './index.module.scss'
+
 export const LogoutPage: React.FC<{
   settings: Settings
 }> = props => {
@@ -19,9 +21,9 @@ export const LogoutPage: React.FC<{
     const performLogout = async () => {
       try {
         await logout()
-        setSuccess('Logged out successfully.')
+        setSuccess('登出成功.')
       } catch (_) {
-        setError('You are already logged out.')
+        setError('您已登出.')
       }
     }
 
@@ -34,16 +36,20 @@ export const LogoutPage: React.FC<{
         <div>
           <h1>{error || success}</h1>
           <p>
-            {'What would you like to do next?'}
+            {'還想繼續購物嗎?'}
             {typeof productsPage === 'object' && productsPage?.slug && (
               <Fragment>
                 {' '}
-                <Link href={`/${productsPage.slug}`}>Click here</Link>
-                {` to shop.`}
+                <Link href={`/${productsPage.slug}`} className={classes.clickLink}>
+                  點擊此處
+                </Link>
+                {` 繼續購物,`}
               </Fragment>
             )}
-            {` To log back in, `}
-            <Link href="/login">click here</Link>
+            {` 或重新`}
+            <Link href="/login" className={classes.clickLink}>
+              登入
+            </Link>
             {'.'}
           </p>
         </div>

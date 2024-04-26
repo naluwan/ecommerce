@@ -4,6 +4,7 @@ import link from '../fields/link'
 
 export const Header: GlobalConfig = {
   slug: 'header',
+  label: '導航列 ( Header )',
   access: {
     read: () => true,
   },
@@ -11,6 +12,7 @@ export const Header: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
+      label: '導航列連結',
       maxRows: 6,
       fields: [
         link({

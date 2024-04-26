@@ -65,7 +65,7 @@ export const CustomerSelect: React.FC<TextField> = props => {
           color: 'var(--theme-elevation-400)',
         }}
       >
-        {`Select the related Stripe customer or `}
+        {`請選擇一個Stripe 顧客或 `}
         <a
           href={`https://dashboard.stripe.com/${
             process.env.PAYLOAD_PUBLIC_STRIPE_IS_TEST_KEY ? 'test/' : ''
@@ -74,7 +74,7 @@ export const CustomerSelect: React.FC<TextField> = props => {
           rel="noopener noreferrer"
           style={{ color: 'var(--theme-text' }}
         >
-          create a new one
+          建立一個新的顧客
         </a>
         {'.'}
       </p>

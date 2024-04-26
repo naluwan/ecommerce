@@ -1,14 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { Footer } from '../../../payload/payload-types'
+import { Footer as FooterType } from '../../../payload/payload-types'
 import { fetchFooter } from '../../_api/fetchGlobals'
 import FooterComponent from './FooterComponent'
 
 import classes from './index.module.scss'
 
 export async function Footer() {
-  let footer: Footer | null = null
+  let footer: FooterType | null = null
 
   try {
     footer = await fetchFooter()

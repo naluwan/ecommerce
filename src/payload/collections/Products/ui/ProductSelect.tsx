@@ -36,7 +36,7 @@ export const ProductSelect: React.FC<TextField> = props => {
           },
           [
             {
-              label: 'Select a product',
+              label: '請選擇一個商品',
               value: '',
             },
           ],
@@ -61,7 +61,7 @@ export const ProductSelect: React.FC<TextField> = props => {
           color: 'var(--theme-elevation-400)',
         }}
       >
-        {`Select the related Stripe product or `}
+        {`請選擇一個已在Stripe建立的商品或 `}
         <a
           href={`https://dashboard.stripe.com/${
             process.env.PAYLOAD_PUBLIC_STRIPE_IS_TEST_KEY ? 'test/' : ''
@@ -70,7 +70,7 @@ export const ProductSelect: React.FC<TextField> = props => {
           rel="noopener noreferrer"
           style={{ color: 'var(--theme-text' }}
         >
-          create a new one
+          建立Stripe新商品
         </a>
         {'.'}
       </p>
@@ -82,16 +82,16 @@ export const ProductSelect: React.FC<TextField> = props => {
             marginBottom: '1.5rem',
           }}
         >
-          <div>
+          <div style={{ marginTop: '20px' }}>
             <span
               className="label"
               style={{
                 color: '#9A9A9A',
               }}
             >
-              {`Manage "${
+              {`在Stripe中檢視 「 ${
                 options.find(option => option.value === stripeProductID)?.label || 'Unknown'
-              }" in Stripe`}
+              } 」`}
             </span>
             <CopyToClipboard value={href} />
           </div>

@@ -29,6 +29,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
   const linkResult: Field = {
     name: 'link',
     type: 'group',
+    label: '連結',
     admin: {
       hideGutter: true,
     },
@@ -39,13 +40,14 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
           {
             name: 'type',
             type: 'radio',
+            label: '連結方式',
             options: [
               {
-                label: 'Internal link',
+                label: '站內連結',
                 value: 'reference',
               },
               {
-                label: 'Custom URL',
+                label: '自訂網址(URL)',
                 value: 'custom',
               },
             ],
@@ -57,7 +59,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
           },
           {
             name: 'newTab',
-            label: 'Open in new tab',
+            label: '在新視窗開啟',
             type: 'checkbox',
             admin: {
               width: '50%',
@@ -85,7 +87,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
     },
     {
       name: 'url',
-      label: 'Custom URL',
+      label: '自訂網址(URL)',
       type: 'text',
       required: true,
       admin: {
@@ -109,7 +111,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
         ...linkTypes,
         {
           name: 'label',
-          label: 'Label',
+          label: '名稱',
           type: 'text',
           required: true,
           admin: {

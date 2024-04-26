@@ -157,6 +157,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       if (res.ok) {
         const { data, errors } = await res.json()
+        console.log('[forget user]', data)
         if (errors) throw new Error(errors[0].message)
         setUser(data?.loginUser?.user)
       } else {
