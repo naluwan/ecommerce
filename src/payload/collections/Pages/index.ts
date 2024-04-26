@@ -75,7 +75,7 @@ export const Pages: CollectionConfig = {
           label: '內容 ( Content )',
           fields: [
             {
-              name: 'Layout',
+              name: 'layout',
               type: 'blocks',
               label: '框架 ( Layout )',
               required: true,
