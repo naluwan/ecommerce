@@ -75,7 +75,8 @@ const Products: CollectionConfig = {
           label: '內容 ( Content )',
           fields: [
             {
-              name: '框架 ( Layout )',
+              name: 'Layout',
+              label: '框架 ( Layout )',
               type: 'blocks',
               blocks: [CallToAction, Content, MediaBlock, Archive],
             },
