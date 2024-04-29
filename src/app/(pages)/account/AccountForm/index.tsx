@@ -53,7 +53,7 @@ const AccountForm: React.FC = () => {
         if (response.ok) {
           const json = await response.json()
           setUser(json.doc)
-          setSuccess('Successfully updated account.')
+          setSuccess(`更新${changePassword ? '密碼' : '個人資訊'}成功`)
           setError('')
           setChangePassword(false)
           reset({
@@ -63,18 +63,18 @@ const AccountForm: React.FC = () => {
             passwordConfirm: '',
           })
         } else {
-          setError('There was a problem updating your account.')
+          setError('更新您的個人資料時發生錯誤')
         }
       }
     },
-    [user, setUser, reset],
+    [user, setUser, reset, changePassword],
   )
 
   useEffect(() => {
     if (user === null) {
       router.push(
         `/login?error=${encodeURIComponent(
-          'You must be logged in to view this page.',
+          '您必須先登入才能查看個人資訊頁面',
         )}&redirect=${encodeURIComponent('/account')}`,
       )
     }
@@ -96,7 +96,7 @@ const AccountForm: React.FC = () => {
       {!changePassword ? (
         <Fragment>
           <p>
-            {'更新您的帳戶資料或點擊 '}
+            {'更新您的個人資訊或點擊 '}
             <button
               type="button"
               className={classes.changePassword}
@@ -108,31 +108,31 @@ const AccountForm: React.FC = () => {
           </p>
           <Input
             name="email"
-            label="Email Address"
+            label="Email"
             required
             register={register}
             error={errors.email}
             type="email"
           />
-          <Input name="name" label="Name" register={register} error={errors.name} />
+          <Input name="name" label="使用者名稱" register={register} error={errors.name} />
         </Fragment>
       ) : (
         <Fragment>
           <p>
-            {'Change your password below, or '}
+            {'更新您的密碼, 或 '}
             <button
               type="button"
               className={classes.changePassword}
               onClick={() => setChangePassword(!changePassword)}
             >
-              cancel
+              取消
             </button>
             .
           </p>
           <Input
             name="password"
             type="password"
-            label="Password"
+            label="密碼"
             required
             register={register}
             error={errors.password}
@@ -140,17 +140,17 @@ const AccountForm: React.FC = () => {
           <Input
             name="passwordConfirm"
             type="password"
-            label="Confirm Password"
+            label="確認密碼"
             required
             register={register}
-            validate={value => value === password.current || 'The passwords do not match'}
+            validate={value => value === password.current || '確認密碼與密碼不相符'}
             error={errors.passwordConfirm}
           />
         </Fragment>
       )}
       <Button
         type="submit"
-        label={isLoading ? 'Processing' : changePassword ? 'Change Password' : 'Update Account'}
+        label={isLoading ? '更新中...' : changePassword ? '更新密碼' : '更新個人資訊'}
         disabled={isLoading}
         appearance="primary"
         className={classes.submit}
