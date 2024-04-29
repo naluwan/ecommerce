@@ -35,7 +35,6 @@ export const priceFromJSON = (priceJSON: string, quantity: number = 1, raw?: boo
     }
   }
 
-  console.log('[price]', price)
   return price
 }
 

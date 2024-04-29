@@ -9,6 +9,7 @@ export const formatDateTime = (timestamp: string): string => {
   // const seconds = date.getSeconds();
 
   const MM = months + 1 < 10 ? `0${months + 1}` : months + 1
+  // getMonth返回得值是從0開始，0即代表1月，所以需要將月份加上1才會是正確的月份
   const DD = days < 10 ? `0${days}` : days
   const YYYY = date.getFullYear()
   // const AMPM = hours < 12 ? 'AM' : 'PM';
@@ -16,5 +17,5 @@ export const formatDateTime = (timestamp: string): string => {
   // const MinMin = (minutes < 10) ? `0${minutes}` : minutes;
   // const SS = (seconds < 10) ? `0${seconds}` : seconds;
 
-  return `${MM}/${DD}/${YYYY}`
+  return `${YYYY}/${MM}/${DD}`
 }
