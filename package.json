@@ -20,7 +20,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
     "payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload",
-    "start": "node server.ts"
+    "start": "node dist/server.ts"
   },
   "dependencies": {
     "@payloadcms/bundler-webpack": "^1.0.0",
