@@ -3,7 +3,6 @@
 }
 
 import React from 'react'
-import Link from 'next/link'
 
 import { Header as HeaderType } from '../../../payload/payload-types'
 import { fetchHeader } from '../../_api/fetchGlobals'
