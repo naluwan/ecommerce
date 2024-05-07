@@ -18,6 +18,7 @@ export const CATEGORIES = `
           width
           height
           url
+          filename
         }
       }
     }
