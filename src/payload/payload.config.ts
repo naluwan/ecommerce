@@ -1,6 +1,8 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack' // bundler-import
 import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-import
 import { payloadCloud } from '@payloadcms/plugin-cloud'
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage'
+import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
@@ -30,13 +32,23 @@ import { priceUpdated } from './stripe/webhooks/priceUpdated'
 import { productUpdated } from './stripe/webhooks/productUpdated'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Store'
+  return 'Shoes Haven'
 }
 
 const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
 
 dotenv.config({
   path: path.resolve(__dirname, '../../.env'),
+})
+
+const USE_LOCAL_STORAGE = !process.env.GCS_CREDENTIALS || !process.env.GCS_BUCKET
+
+const myGcsAdapter = gcsAdapter({
+  acl: 'Private',
+  options: {
+    credentials: JSON.parse(process.env.GCS_CREDENTIALS || '{}'),
+  },
+  bucket: process.env.GCS_BUCKET || '',
 })
 
 export default buildConfig({
@@ -54,6 +66,12 @@ export default buildConfig({
     webpack: config => {
       return {
         ...config,
+        module: {
+          ...config.module,
+          ...(USE_LOCAL_STORAGE && {
+            noParse: /@payloadcms\/plugin-cloud-storage/,
+          }),
+        },
         resolve: {
           ...config.resolve,
           alias: {
@@ -143,5 +161,14 @@ export default buildConfig({
       uploadsCollection: 'media',
     }),
     payloadCloud(),
+    cloudStorage({
+      enabled: !USE_LOCAL_STORAGE,
+      collections: {
+        media: {
+          adapter: !USE_LOCAL_STORAGE && myGcsAdapter,
+          disableLocalStorage: !USE_LOCAL_STORAGE,
+        },
+      },
+    }),
   ],
 })
