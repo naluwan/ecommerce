@@ -38,7 +38,7 @@ export default async function CreateAccount() {
 
           <div className={classes.formTitle}>
             <h3>註冊帳號</h3>
-            <Image src="/assets/icons/hand.png" alt="hand" width={30} height={30} />
+            {/* <Image src="/assets/icons/hand.png" alt="hand" width={30} height={30} /> */}
           </div>
 
           <p>請輸入帳號密碼</p>

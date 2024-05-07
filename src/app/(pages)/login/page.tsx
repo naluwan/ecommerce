@@ -36,7 +36,7 @@ export default async function Login() {
 
           <div className={classes.formTitle}>
             <h3>歡迎</h3>
-            <Image src="/assets/icons/hand.png" alt="hand" width={30} height={30} />
+            {/* <Image src="/assets/icons/hand.png" alt="hand" width={30} height={30} /> */}
           </div>
 
           <p>請登入</p>
