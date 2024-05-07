@@ -42,7 +42,7 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
           <h1>感謝您的購買!</h1>
           <p>{`您的訂單已確認。您很快就會收到一封確認電子郵件。您的訂單編號是： ${orderID}`}</p>
           <div className={classes.actions}>
-            <Button href={`/orders/${orderID}`} label="查看訂單" appearance="primary" />
+            <Button href={`/account/orders/${orderID}`} label="查看訂單" appearance="primary" />
             <Button
               href={`${process.env.NEXT_PUBLIC_SERVER_URL}/account/orders`}
               label="查看所有訂單"
